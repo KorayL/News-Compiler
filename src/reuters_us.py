@@ -21,15 +21,13 @@ def reuters():
             links.append(f"https://reuters.com{div.find('a')['href']}")
 
     # get data from all sub-article links
-    for i, link in zip(range(0, len(links)+1), links):
+    for i, link in zip(range(0, len(links) + 1), links):
         html = BeautifulSoup(requests.get(link).text, "html.parser")
         category = "us-news"
         title = html.find('h1').getText()
 
-        date = ""
         date_line = html.findAll(class_="date-line__date__23Ge-")
-        for j in range(2, 3):
-            date += date_line[j].getText()
+        date = date_line[1].getText() + " | " + date_line[2].getText()
 
         try:
             image_url = html.find(class_=re.compile("image-container")).find('img')['src']
