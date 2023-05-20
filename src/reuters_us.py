@@ -4,15 +4,13 @@ from bs4 import BeautifulSoup
 import re
 
 def reuters():
-    global soup
 
+    # get website html
     address = "https://www.reuters.com/world/us/"
     response = requests.get(address)
     soup = BeautifulSoup(response.text, 'html.parser')
-    articles = get_articles()
-    return articles
 
-def get_articles():
+    # create return array
     articles = []
 
     # get links to all sub-articles
