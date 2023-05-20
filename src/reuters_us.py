@@ -3,12 +3,11 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-def reuters():
+def reuters_us():
 
     # get website html
     address = "https://www.reuters.com/world/us/"
-    response = requests.get(address)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(requests.get(address).text, 'html.parser')
 
     # create return array
     articles = []
@@ -48,6 +47,3 @@ def reuters():
         articles.append(Article(category, title, date, image_name, body))
 
     return articles
-
-if __name__ == "__main__":
-    reuters()
