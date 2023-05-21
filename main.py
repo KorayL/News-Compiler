@@ -6,7 +6,7 @@ def main():
     articles = dict()
 
     article_list = reuters_us()
-    article_list = ap_us()
+    article_list.append(ap_us())
     for i, article in zip(range(0, len(article_list)+1), article_list):
         articles[f"reuters-{i}"] = article.to_dict()
 
