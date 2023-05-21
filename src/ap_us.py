@@ -37,7 +37,6 @@ def ap_us():
                 file.write(image)
 
         body = ""
-        print(link)
         paragraph_tags = html.findAll('p', class_=re.compile("Component-root"))
         for tag in paragraph_tags:
             body += tag.getText() + "\n"
