@@ -20,7 +20,7 @@ def reuters_us():
             links.append(f"https://reuters.com{div.find('a')['href']}")
 
     # get data from all sub-article links
-    for i, link in zip(range(0, len(links) + 1), links):
+    for num, link in zip(range(0, len(links) + 1), links):
         html = BeautifulSoup(requests.get(link).text, "html.parser")
         category = "us-news"
         title = html.find('h1').getText()
@@ -34,9 +34,9 @@ def reuters_us():
         except TypeError:
             image_name = "Null"
         else:
-            with open(f"data/reuters-{i}.png", 'wb') as file:
+            image_name = f"reuters-us-{num}.jpg"
+            with open(f"data/{image_name}", 'wb') as file:
                 file.write(image)
-            image_name = f"reuters-{i}.png"
 
         body = ""
         paragraph_tags = html.find(class_=re.compile("article-body")).findAll('p')
