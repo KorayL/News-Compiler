@@ -1,6 +1,3 @@
-# from src.sites import reuters_us
-# from src.sites import ap_us
-
 import os
 
 # contains all modules to be imported when "from sites import *" is called
