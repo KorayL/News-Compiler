@@ -19,7 +19,7 @@ class Article:
         :param path: location and name to store image
         """
 
-        if self.image_url != "Null":
+        if self.image_url is not None:
             self.image_path = path
             image = requests.get(self.image_url).content
             with open(path, 'wb') as file:
