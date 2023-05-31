@@ -3,10 +3,11 @@ import re
 
 def get_links(site_html):
     links = []
-    divs = site_html.findAll('div')
-    for div in divs:
-        if "data-testid" in div.attrs and div["data-testid"] == "MediaStoryCard":
-            links.append(f"https://reuters.com{div.find('a')['href']}")
+
+    stories = site_html.findAll(lambda tag: tag.name == "div" and tag.has_attr("data-testid") and
+                                tag["data-testid"] == "MediaStoryCard", limit=5)
+    for story in stories:
+        links.append(f"https://reuters.com{story.find('a')['href']}")
 
     return links
 
@@ -23,7 +24,7 @@ def get_image_urls(html):
     try:
         image_url = html.find(class_=re.compile("image-container")).find('img')['src']
     except TypeError:
-        image_url = "Null"
+        image_url = None
     return image_url
 
 def get_bodies(html):
@@ -31,7 +32,7 @@ def get_bodies(html):
     paragraph_tags = html.find(class_=re.compile("article-body")).findAll('p')
     for tag in paragraph_tags:
         if re.compile("paragraph-\d*"):
-            body += tag.getText() + "\n"
+            body += tag.getText() + "\n\n"
     return body
 
 
