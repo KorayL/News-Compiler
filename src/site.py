@@ -34,7 +34,7 @@ class Site:
     def get_htmls(self):
         links = self.link_func(self.site_html)
 
-        with Pool(16) as pool:
+        with Pool() as pool:
             self.article_htmls = (pool.map(self._get_html, links))
 
     def get_titles(self):
@@ -50,7 +50,7 @@ class Site:
         self.article_bodies = self._html_loop_wrapper(self.body_func)
 
     def create_articles(self):
-        for i in range(len(self.article_htmls)-1):
+        for i in range(len(self.article_htmls)):
             Article(self.source, self.category, self.article_titles[i], self.article_dates[i],
                     self.article_image_urls[i], self.article_bodies[i])
 
