@@ -1,7 +1,8 @@
 from src.article import Article
 import requests
 from bs4 import BeautifulSoup
-import re
+
+from multiprocessing import Pool
 
 class Site:
     Instances = []
@@ -26,12 +27,15 @@ class Site:
         self.source = source
         self.site_html = BeautifulSoup(requests.get(address).text, 'html.parser')
 
+    def _get_html(self, link):
+        article_html = BeautifulSoup(requests.get(link).text, "html.parser")
+        return article_html
+
     def get_htmls(self):
         links = self.link_func(self.site_html)
 
-        for link in links:
-            article_html = BeautifulSoup(requests.get(link).text, "html.parser")
-            self.article_htmls.append(article_html)
+        with Pool(16) as pool:
+            self.article_htmls = (pool.map(self._get_html, links))
 
     def get_titles(self):
         self.article_titles = self._html_loop_wrapper(self.title_func)
