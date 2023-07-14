@@ -1,8 +1,9 @@
+from json import dumps
+
 from src.site import Site
 from src.article import Article
-
-from json import dumps
 from src.sites import *
+
 
 def main():
     article_dict = dict()
@@ -12,10 +13,15 @@ def main():
         print(f"Getting {site.source} HTMLs")
         site.get_htmls()
         print("Getting Article Information...")
+        print("\t--titles--")
         site.get_titles()
+        print("\t--dates--")
         site.get_dates()
+        print("\t--image urls--")
         site.get_image_urls()
+        print("\t--bodies--")
         site.get_bodies()
+        print("\t--creating articles--")
         site.create_articles()
 
     # Download and save images from articles
@@ -34,6 +40,7 @@ def main():
     print("Writing Dictionaries to file...")
     with open("data/articles.json", "w") as file:
         file.write(dumps(article_dict, indent=4))
+
 
 if __name__ == '__main__':
     main()

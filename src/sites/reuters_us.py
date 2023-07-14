@@ -1,5 +1,7 @@
-from src.site import Site
 import re
+
+from src.site import Site
+
 
 def get_links(site_html):
     links = []
@@ -11,14 +13,17 @@ def get_links(site_html):
 
     return links
 
+
 def get_titles(html):
     title = html.find('h1').getText()
     return title
+
 
 def get_dates(html):
     date_line = html.findAll(class_="date-line__date__23Ge-")
     date = date_line[1].getText() + " | " + date_line[2].getText()
     return date
+
 
 def get_image_urls(html):
     try:
@@ -26,6 +31,7 @@ def get_image_urls(html):
     except TypeError:
         image_url = None
     return image_url
+
 
 def get_bodies(html):
     body = ""
@@ -37,4 +43,4 @@ def get_bodies(html):
 
 
 address = "https://www.reuters.com/world/us/"
-Site(address, "us-news", "reuters", get_links, get_titles, get_dates, get_image_urls, get_bodies)
+Site(address, "us-news", "Reuters", get_links, get_titles, get_dates, get_image_urls, get_bodies)
