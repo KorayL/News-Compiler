@@ -1,64 +1,58 @@
-from src.article import Article
+from multiprocessing import Pool
+
 import requests
 from bs4 import BeautifulSoup
 
-from multiprocessing import Pool
+from src.article import Article
 
 
 class Site:
-    Instances = []
+    instances = []
 
-    def __init__(self, address, category, source, link_func, title_func, date_func, image_url_func, body_func):
-        Site.Instances.append(self)
+    def __init__(self, address: str, category: str, source: str,
+                 link_func, title_func, date_func, image_url_func, body_func):
+        Site.instances.append(self)
 
         self.link_func = link_func
+        """ Function to pull all articles from news site """
         self.title_func = title_func
+        """ Function to pull article titles from news site """
         self.date_func = date_func
+        """ Function to pull article dates from news site """
         self.image_url_func = image_url_func
+        """ Function to pull image urls from news site """
         self.body_func = body_func
+        """ Function to pull article bodys from news site """
 
-        self.article_htmls = []
-        self.article_titles = []
-        self.article_dates = []
-        self.article_image_urls = []
-        self.article_bodies = []
-
-        self.category = category
         self.source = source
+        """ Stores the source where the article was pulled from """
+        self.category = category
+        """ Category the article falls into (ex: world news, politics, space, etc.) """
+
+        self.articles: list = []
+        """ List of all articles associated with this class """
 
         self.site_html = BeautifulSoup(requests.get(address).text, 'html.parser')
 
-    def _get_html(self, link):
+    @staticmethod
+    def _get_html(link) -> BeautifulSoup:
+        """
+        Pulls the html of a website
+        :param link: Address to the website to pull html from
+        :return: BeautifulSoup object of the html from the website
+        """
+
         article_html = BeautifulSoup(requests.get(link).text, "html.parser")
         return article_html
 
-    def get_htmls(self):
+    def create_articles(self):
         links = self.link_func(self.site_html)
 
         with Pool() as pool:
-            self.article_htmls = (pool.map(self._get_html, links))
+            article_htmls = (pool.map(self._get_html, links))
 
-    def get_titles(self):
-        self.article_titles = self._html_loop_wrapper(self.title_func)
-
-    def get_dates(self):
-        self.article_dates = self._html_loop_wrapper(self.date_func)
-
-    def get_image_urls(self):
-        self.article_dates = self._html_loop_wrapper(self.date_func)
-
-    def get_bodies(self):
-        self.article_bodies = self._html_loop_wrapper(self.body_func)
-
-    def create_articles(self):
-        for i in range(len(self.article_htmls)):
-            Article(self.source, self.category, self.article_titles[i], self.article_dates[i],
-                    self.article_image_urls[i], self.article_bodies[i])
-
-    def _html_loop_wrapper(self, func):
-        array = []
-        for html in self.article_htmls:
-            var = func(html)
-            array.append(var)
-
-        return array
+        for html in article_htmls:
+            self.articles.append(
+                Article(html, self.category, self.source,
+                        self.title_func, self.date_func, self.image_url_func, self.body_func)
+            )
