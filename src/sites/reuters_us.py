@@ -7,7 +7,7 @@ def get_links(site_html):
     links = []
 
     stories = site_html.findAll(lambda tag: tag.name == "div" and tag.has_attr("data-testid") and
-                                tag["data-testid"] == "MediaStoryCard", limit=5)
+                                tag["data-testid"] == "MediaStoryCard", limit=10)
     for story in stories:
         links.append(f"https://reuters.com{story.find('a')['href']}")
 
@@ -43,4 +43,4 @@ def get_bodies(html):
 
 
 address = "https://www.reuters.com/world/us/"
-Site(address, "us-news", "Reuters", get_links, get_titles, get_dates, get_image_urls, get_bodies)
+Site(address, "US News", "Reuters", get_links, get_titles, get_dates, get_image_urls, get_bodies)
