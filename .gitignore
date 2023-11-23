@@ -1,2 +1,7 @@
+# IDE files
 **/.idea
+**/__pycache__
 **/Desktop
+
+# Data will be generated
+**/data/**
