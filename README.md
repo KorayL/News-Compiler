@@ -2,11 +2,14 @@
 
 ## About
 
-News compiler is a resource that aggregates news articles from across the internet, compiling them into one cohesive location one click away.
+News compiler is a resource that aggregates news articles from across the internet, compiling them into one cohesive location with each article one click away.
 
 ## How to Use 📜
 
-[Python](https://www.python.org/downloads/) must be installed
+1. [Python](https://www.python.org/downloads/) must be installed
+2. Follow the steps below to install News Compiler:
+
+<br/>
 
 ```sh
 git clone https://github.com/KorayL/News-Compiler.git
