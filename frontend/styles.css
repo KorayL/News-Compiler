@@ -1,0 +1,44 @@
+body {
+    background-color: #353535;
+    color: white;
+
+    padding-top: 1vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+#menu {
+    background-color: #282828;
+    text-align: center;
+
+    margin-bottom: 5vh;
+    height: 3em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article {
+    background: #282828;
+    text-align: center;
+
+    height: auto;
+    width: 16vw;
+    border-radius: 30px;
+
+    padding: 2%;
+    margin-bottom: 1%;
+}
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
