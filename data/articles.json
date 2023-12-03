@@ -1,0 +1,182 @@
+{
+    "ABC News-0": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "3 men experiencing homelessness fatally shot by potential serial killer in Los Angeles: Police",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/9ed1d23c-1843-4302-b6e4-72e8105de258/los-angeles-gty-er-231201_1701467341260_hpMain_16x9.jpeg",
+        "image_path": "data/ABC News-0.png",
+        "body": "3 men body"
+    },
+    "ABC News-1": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Olympic gold medalist swimmer Klete Keller sentenced to 36 months of probation for role in Capitol riot",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/bdb63893-c10c-4b3e-a618-aac7e824f5ce/klete-keller-jan-6-01-ht-jt-231201_1701453134563_hpEmbed_23x12.jpg",
+        "image_path": "data/ABC News-1.png",
+        "body": "Olympic Body"
+    },
+    "ABC News-2": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Inmate who stabbed Derek Chauvin 22 times is charged with attempted murder, prosecutors say",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/a8e60718-3b98-4071-b2fc-63bb6ad0ff16/wirestory_d458e9c8fba02a98d5dbabb1884dc1cc_16x9.jpg?w=992",
+        "image_path": "data/ABC News-2.png",
+        "body": "Inmate body"
+    },
+    "ABC News-3": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Man charged with stabbing Derek Chauvin 22 times in prison: DOJ",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/6da6757d-b940-415c-8944-e6f91ef1e0d8/derek-chauvin-mo_1701468945325_hpMain.jpg",
+        "image_path": "data/ABC News-3.png",
+        "body": "Stabbing body"
+    },
+    "ABC News-4": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "2 dead, 3 injured in Las Vegas shooting of homeless: Police ",
+        "date": "No Date Found",
+        "image_url": "https://s.abcnews.com/images/Politics/desantis-newsom-1-gty-bb-231129_1701285849791_hpMain_v16x9_1x1_144.jpg",
+        "image_path": "data/ABC News-4.png",
+        "body": "Vegas shooting body"
+    },
+    "ABC News-5": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Suspect allegedly appeared intoxicated at casino before Las Vegas crash that killed 2 troopers",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/681158a8-d2ec-48a6-a303-7ef86d83d1ef/troopers-ht-bb-231201_1701460034903_hpEmbed_16x9.jpg",
+        "image_path": "data/ABC News-5.png",
+        "body": ""
+    },
+    "ABC News-6": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Judge rejects Trump's motion to dismiss his federal election interference case",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/b229291b-007a-4969-bb40-10aca0305c0d/trump-white-house-gty-jt-230919_1695150146740_hpMain.jpg",
+        "image_path": "data/ABC News-6.png",
+        "body": ""
+    },
+    "ABC News-7": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Pence told Jan. 6 special counsel harrowing details about 2020 aftermath, warnings to Trump: Sources",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/9652ccb1-19b4-4fff-929c-d091e3f2b037/pence-trump3-file-gty-ml-231127_1701110318739_hpMain.jpg",
+        "image_path": "data/ABC News-7.png",
+        "body": ""
+    },
+    "ABC News-8": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Protester sets self on fire in apparent 'political protest' outside Israeli Consulate office in Atlanta",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/55d5da3a-6447-4612-b24f-c95fff30e03d/atlanta-protest-1-ht-gmh-231201_1701466192674_hpMain.jpg",
+        "image_path": "data/ABC News-8.png",
+        "body": ""
+    },
+    "ABC News-9": {
+        "source": "ABC News",
+        "category": "US News",
+        "title": "Olympic gold medalist swimmer Klete Keller sentenced to 36 months of probation for role in Capitol riot",
+        "date": "No Date Found",
+        "image_url": "https://i.abcnewsfe.com/a/bdb63893-c10c-4b3e-a618-aac7e824f5ce/klete-keller-jan-6-01-ht-jt-231201_1701453134563_hpEmbed_23x12.jpg",
+        "image_path": "data/ABC News-9.png",
+        "body": ""
+    },
+    "Associated Press (AP)-0": {
+        "source": "Associated Press (AP)",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Associated Press (AP)-1": {
+        "source": "Associated Press (AP)",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Associated Press (AP)-2": {
+        "source": "Associated Press (AP)",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Associated Press (AP)-3": {
+        "source": "Associated Press (AP)",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Associated Press (AP)-4": {
+        "source": "Associated Press (AP)",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Reuters-0": {
+        "source": "Reuters",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Reuters-1": {
+        "source": "Reuters",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Reuters-2": {
+        "source": "Reuters",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Reuters-3": {
+        "source": "Reuters",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    },
+    "Reuters-4": {
+        "source": "Reuters",
+        "category": "US News",
+        "title": null,
+        "date": null,
+        "image_url": null,
+        "image_path": null,
+        "body": null
+    }
+}

@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-  },
-  "files": ["script.ts"]
-}
