@@ -28,6 +28,11 @@ for (const article of Object.keys(data)) {
     const template_src = template.getElementById("template_src");
     template_src.textContent = source;
 
+    // Set up div wrapping article
+    const template_container = template.firstElementChild;
+    template_container.id = article;
+    template_container.addEventListener("click", function() {openArticle(this.id)})
+
     // Add template to site
     const container = document.getElementsByClassName("articles")[0];
     container.appendChild(template);
@@ -51,4 +56,21 @@ function checkArticle(Object) {
     }
 
     return valid;
+}
+
+/**
+ * Stores the article object with the given id as object name in session storage and opens the
+ * article site. Article site is to then pull the data from session storage and use to display
+ * the article.
+ * @param id ID belonging to the article clicked. Will also match name of article object from data.
+ */
+function openArticle(id) {
+    // Get article object from data
+    const article = data[id];
+
+    // Store article object as string in browser
+    sessionStorage.setItem("article", JSON.stringify(article));
+
+    // Open article html doc in same tab
+    window.open("article.html", "_self");
 }
