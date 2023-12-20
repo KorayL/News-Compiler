@@ -12,29 +12,25 @@ for (const article of Object.keys(data)) {
     const image_url = data[article]["image_url"];
     const source = data[article]["source"];
 
-    // Create new tile
-    let div = document.createElement("div");
-    div.id = article;
-    div.classList.add("article");
+    // Get template from html doc
+    const template = document.getElementById("template_article").content.cloneNode(true);
 
-    // Add article tile
-    let title_tag = document.createElement("h2");
-    title_tag.append(document.createTextNode(title));
-    div.append(title_tag)
+    // Get and set title
+    const template_title = template.getElementById("template_title");
+    template_title.textContent = title;
 
-    // Add image
-    let image_tag = document.createElement("img");
-    image_tag.src = image_url;
-    image_tag.alt = title;
-    div.append(image_tag)
+    // Get and set image
+    const template_image = template.getElementById("template_image");
+    template_image.src = image_url;
+    template_image.alt = title;
 
-    // Add source
-    let source_tag = document.createElement("p");
-    source_tag.append(document.createTextNode(source));
-    div.append(source_tag);
+    // Get and set source
+    const template_src = template.getElementById("template_src");
+    template_src.textContent = source;
 
-    // Append to document
-    document.getElementsByClassName("articles")[0].appendChild(div);
+    // Add template to site
+    const container = document.getElementsByClassName("articles")[0];
+    container.appendChild(template);
 }
 
 /**
