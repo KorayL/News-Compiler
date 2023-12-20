@@ -11,6 +11,8 @@ body {
     background-color: #282828;
     text-align: center;
 
+    border-radius: 2em;
+
     margin-bottom: 5vh;
     height: 3em;
 
@@ -23,11 +25,12 @@ body {
     background: #282828;
     text-align: center;
 
+    border-radius: 2em;
+
     height: auto;
     width: 16vw;
-    border-radius: 30px;
 
-    padding: 2%;
+    padding: 0 2%;  /* top & bottom | left & right */
     margin-bottom: 1%;
 }
 
@@ -35,6 +38,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: flex-start;
 }
 
 .article img {
