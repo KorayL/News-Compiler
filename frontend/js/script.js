@@ -32,6 +32,7 @@ for (const article of Object.keys(data)) {
     const template_container = template.firstElementChild;
     template_container.id = article;
     template_container.addEventListener("click", function() {openArticle(this.id)})
+    template_container.style.cursor = "grab";
 
     // Add template to site
     const container = document.getElementsByClassName("articles")[0];
@@ -72,5 +73,5 @@ function openArticle(id) {
     sessionStorage.setItem("article", JSON.stringify(article));
 
     // Open article html doc in same tab
-    window.open("article.html", "_self");
+    window.open("pages/article.html", "_self");
 }

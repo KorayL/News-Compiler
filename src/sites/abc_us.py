@@ -35,7 +35,7 @@ def get_image_urls(html):
 
 def get_bodies(html):
     body = ""
-    paragraph_tags = html.findAll(class_="Ekqk yuUa lqtk TjIX aGjv")
+    paragraph_tags = html.findAll(class_=re.compile("Ekqk nlgH yuUa"))
     for tag in paragraph_tags:
         body += tag.getText() + "\n\n"
     return body
