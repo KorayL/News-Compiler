@@ -1,4 +1,4 @@
-from src.site import Site
+from src.Site import Site
 
 
 def get_links(site_html):

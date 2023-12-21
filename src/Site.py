@@ -3,7 +3,7 @@ from multiprocessing import Pool
 import requests
 from bs4 import BeautifulSoup
 
-from src.article import Article
+from src.Article import Article
 
 
 class Site:

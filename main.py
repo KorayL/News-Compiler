@@ -1,8 +1,8 @@
 from json import dumps
 
 from src.sites import *
-from src.site import Site
-from src.article import Article
+from src.Site import Site
+from src.Article import Article
 
 
 def main():
