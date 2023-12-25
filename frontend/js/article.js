@@ -2,15 +2,23 @@
 const article = JSON.parse(sessionStorage.getItem("article"));
 
 // Extra needed data
+const url = article["url"];
 const title = article["title"];
 const image_url = article["image_url"];
 const body = article["body"];
 const date = article["date"] == null ? "" : article["date"];
 const source = article["source"];
 
-document.getElementById("title").textContent = title;
+// Setting up title
+const title_element = document.getElementById("title");
+title_element.textContent = title;
+title_element.style.cursor = "grab";
+title_element.addEventListener("click", function() {window.open(url)});
+
+// Setting up caption of image
 document.getElementById("meta").textContent = source + " | " + date;
 
+// Setting up image
 const image_tag = document.getElementById("image");
 image_tag.src = image_url
 image_tag.alt = title;
