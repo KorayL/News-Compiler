@@ -6,7 +6,7 @@ const url = article["url"];
 const title = article["title"];
 const image_url = article["image_url"];
 const body = article["body"];
-const date = article["date"] == null ? "" : article["date"];
+const date = article["date"];
 const source = article["source"];
 
 // Setting up title
@@ -16,7 +16,9 @@ title_element.style.cursor = "grab";
 title_element.addEventListener("click", function() {window.open(url)});
 
 // Setting up caption of image
-document.getElementById("meta").textContent = source + " | " + date;
+console.log(date)
+const date_string = date !== null ? " | " + date : " "
+document.getElementById("meta").textContent = source + date_string
 
 // Setting up image
 const image_tag = document.getElementById("image");
