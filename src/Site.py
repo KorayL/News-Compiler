@@ -29,6 +29,8 @@ class Site(ABC):
         self.set_url()
         self.set_source()
         self.set_category()
+
+        print("\tdownloading website HTMl")
         self.html = self.get_html(self.url)
 
     def create_articles(self):
@@ -37,6 +39,7 @@ class Site(ABC):
         urls = self.get_article_urls(self.html)
 
         for url in urls:
+            print(f"\textracting information from article: {url}")
             # Use abstract methods to get all necessary information
             html = self.get_html(url)
             title = self.get_title(html)

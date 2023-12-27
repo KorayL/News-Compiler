@@ -4,7 +4,7 @@ from flaskwebgui import FlaskUI
 
 # Create flask app and gui
 app = Flask(__name__)
-ui = FlaskUI(app=app, server="flask", width=1920, height=1000)
+ui = FlaskUI(app=app, server="flask", fullscreen=True)
 
 
 # Create function for main site

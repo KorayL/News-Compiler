@@ -11,6 +11,8 @@ def get_sites() -> list[Site]:
     :return: The list of instantiated sites.
     """
 
+    print("loading sites...")
+
     sites: list[Site]
     sites = [site() for site in Site.__subclasses__()]
 
@@ -23,14 +25,18 @@ def main():
     # Create dictionary with all articles from all sites
     article_dict: dict = dict()
     for i, site in enumerate(sites):
+        print(f"getting news site {i} of {len(sites)}")
         site.create_articles()
         article_dict.update(site.to_dict())
 
     # Write articles dictionary to file
+    print("writing articles to file")
     with open("src/static/articles.json", "w") as file:
         file.write(dumps(article_dict, indent=4))
 
 
 if __name__ == '__main__':
-    # main()
+    print("running main")
+    main()
+    print("launching gui")
     gui.run()
