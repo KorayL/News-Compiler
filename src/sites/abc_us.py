@@ -11,15 +11,15 @@ class abc_us(Site):
         self.url = "https://abcnews.go.com/US"
 
     def set_source(self) -> None:
-        self.source = "US News"
+        self.source = "ABC News"
 
     def set_category(self) -> None:
-        self.category = "ABC News"
+        self.category = "US News"
 
     def get_article_urls(self, html: BeautifulSoup) -> list[str]:
         links: list[str] = []
 
-        stories: list[bs4.PageElement] = html.findAll(class_="ContentList__Item", limit=20)
+        stories: list[bs4.element] = html.findAll(class_="ContentList__Item", limit=20)
 
         for story in stories:
             links.append(story.find("a", class_="AnchorLink")["href"])
@@ -47,3 +47,8 @@ class abc_us(Site):
             paragraphs.append(tag.getText())
 
         return paragraphs
+
+
+if __name__ == "__main__":
+    site = abc_us()
+    print(site.html.prettify())

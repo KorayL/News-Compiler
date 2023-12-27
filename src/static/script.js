@@ -1,5 +1,5 @@
 // Get data from json
-const data = await fetch("../data/articles.json")
+const data = await fetch("../static/articles.json")
                    .then((response) => {return response.json()});
 
 // Loop through the articles from json
@@ -73,5 +73,5 @@ function openArticle(id) {
     sessionStorage.setItem("article", JSON.stringify(article));
 
     // Open article html doc in same tab
-    window.open("pages/article.html", "_self");
+    window.open("article.html", "_self");
 }

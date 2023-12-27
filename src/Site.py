@@ -83,8 +83,9 @@ class Site(ABC):
 
     @abstractmethod
     def set_source(self) -> None:
-        """ Sets what real website this site object represents. Check other Site object
-        implementations or run the application to find examples. \n
+        """ Sets what real website this site object represents. The site it not used for any
+        functional purpose-it simply informs the user where the article is coming from. Check
+        other Site object implementations or run the application to find examples. \n
         Implementation is simple: self.source=''. """
         pass
 
