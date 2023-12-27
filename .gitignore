@@ -5,3 +5,4 @@
 
 # Data will be generated
 **/data/**
+/src/static/articles.json
