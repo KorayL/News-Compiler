@@ -28,7 +28,6 @@ for (const article of Object.keys(data)) {
         template_image.remove();
     }
 
-
     // Get and set source
     const template_src = template.getElementById("template_src");
     template_src.textContent = source;

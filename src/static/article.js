@@ -22,10 +22,15 @@ document.getElementById("meta").textContent = source + date_string
 
 // Setting up image
 const image_tag = document.getElementById("image");
-image_tag.src = image_url
-image_tag.alt = title;
+if (image_url != null) {  // If article has an image
+    image_tag.src = image_url
+    image_tag.alt = "Image for article";
+} else {  // If not image for the article
+    image_tag.remove()
+}
 
-// Modified to break body into paragraphs */
+// Modified to break body into paragraphs
+console.log(body)
 let string = body;
 // Holds the substring to be placed in a paragraph
 let substring;
