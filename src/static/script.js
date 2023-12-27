@@ -21,8 +21,13 @@ for (const article of Object.keys(data)) {
 
     // Get and set image
     const template_image = template.getElementById("template_image");
-    template_image.src = image_url;
-    template_image.alt = title;
+    if (image_url != null) {  // If article has an image
+        template_image.src = image_url;
+        template_image.alt = "Image for article";
+    } else {  // If not image for the article
+        template_image.remove();
+    }
+
 
     // Get and set source
     const template_src = template.getElementById("template_src");
@@ -49,7 +54,7 @@ function checkArticle(Object) {
     let valid = true;
 
     // Create an array of necessary attributes to check
-    let attributes = ["source", "category", "image_url", "body"];
+    let attributes = ["source", "category", "body"];
 
     // Check if necessary attributes are null.
     for (let attribute of attributes) {
