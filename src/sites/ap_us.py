@@ -34,15 +34,26 @@ class ap_us(Site):
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         try:
-            image_url = html.find(class_=re.compile("Page-lead")).find('img')['src']
+            # Try to get image
+            page_lead = html.find("div", class_=re.compile("Page-lead"))
+            image_url = page_lead.find("img")["src"]
 
+            # If image not returned
             if "https" not in image_url:
-                return None
+                # Try to get image from carousel
+                carousel_media = page_lead.find("div", class_="CarouselSlide-media")
+                image_url = carousel_media.find("source")["data-flickity-lazyload-srcset"]
 
-            return image_url
+                # Image links may be chained together or have extraneous characters, only take before the first space
+                i = image_url.index(" ")
+                image_url = image_url[0:i]
+
+            # Return image if image has been retrieved, None otherwise
+            return image_url if "http" in image_url else None
         except Exception as e:
             if e is KeyboardInterrupt:
                 raise e
+
             return None
 
     def get_body(self, html: BeautifulSoup) -> list[str]:
