@@ -1,3 +1,4 @@
+import tkinter.messagebox as alert
 from json import dumps
 
 from src.Site import Site
@@ -37,6 +38,8 @@ def main():
 
 if __name__ == '__main__':
     print("running main")
-    main()
-    print("launching gui")
-    gui.run()
+    try:
+        main()
+        gui.run()
+    except Exception as e:
+        alert.showerror(title="An error has occurred!", message=str(e))

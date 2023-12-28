@@ -46,11 +46,16 @@ class Site(ABC):
         for url in urls:
             print(f"\textracting information from article: {url}")
             # Use abstract methods to get all necessary information
-            html = self.get_html(url)
-            title = self.get_title(html)
-            image_url = self.get_image_url(html)
-            body = self.get_body(html)
-            date = self.get_date(html)
+            try:
+                html = self.get_html(url)
+                title = self.get_title(html)
+                image_url = self.get_image_url(html)
+                body = self.get_body(html)
+                date = self.get_date(html)
+            except Exception as e:  # If any exception occurs, skip the article
+                print(f"Skipping article due to exception! {url}")
+                print(e)
+                continue
 
             # Create one string from body with special characters between all paragraphs
             # format must be recognized by js code.
