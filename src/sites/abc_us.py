@@ -7,6 +7,11 @@ from src.Site import Site
 
 
 class abc_us(Site):
+    """
+    Implementation of Site class. This class provides methods for reading through the
+    ABC New's United States news.
+    """
+
     def set_url(self) -> None:
         self.url = "https://abcnews.go.com/US"
 

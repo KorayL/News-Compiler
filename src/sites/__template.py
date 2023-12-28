@@ -10,11 +10,19 @@ class template(Site):
     """
     Creating your own site class is very easy. You must inherit from the Site super class,
     implementing all abstract methods. After that, follow the documentation for each method,
-    reading over other implementations to supplement, and you should be good to go.
+    reading over other implementations to supplement, and you should be good to go. Furthermore,
+    the name of this class is functionally irrelevant.
 
     The only thing that matters for the abstract methods is that the return type is what is asked
     for. Your implementation can be as creative as it needs to be as long as the return types are
-    met.
+    met. Examples: you can override the static "get_html(url)" method, create methods, add fields/
+    attributes, etc.
+
+    You may want to add "if __name__ == "__main__":" to the bottom of this file for testing
+    purposes. You can use it run functions in this class. It does not matter if you delete it
+    once you're done. If you do this, start by instantiating the class. This will set_url,
+    set_source, set_category, and then get_html. To test additional functions, run them
+    individually or call create_articles.
     """
 
     def set_url(self) -> None:

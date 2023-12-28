@@ -7,7 +7,12 @@ from src.Article import Article
 
 
 class Site(ABC):
-    """ Abstract class that represents a news website containing several articles. """
+    """
+    Abstract class that represents a news website containing several articles. This class
+    contains necessary methods to get information from all articles on a specific news website.
+    If an exception is thrown from one of the abstract methods when pulling information from an
+    article's website, that article will be skipped (not included).
+    """
 
     def __init__(self) -> None:
         """ Initializes the site. Gets all necessary attributes. Some attributes may need to be
@@ -52,7 +57,8 @@ class Site(ABC):
             formatted_body: str = "\n\n".join(body)
 
             # Create article
-            article: Article = Article(url, title, image_url, formatted_body, self.source, self.category, date)
+            article: Article = Article(url, title, image_url, formatted_body, self.source,
+                                       self.category, date)
 
             # Add article to list of articles
             self.articles.append(article)
@@ -127,10 +133,16 @@ class Site(ABC):
     @abstractmethod
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         """
-        Gets the URL of the article's image. Needs to work for each article obtained from running
-        get_article_urls(). It is okay if an article has no associated image.
+        Gets the URL of the article's image. each article obtained from running
+        get_article_urls(). It is okay if an article has no associated image. \n
+        Highly recommend considering try/except statements in this method: some websites will
+        have articles without images, have articles with videos, or have articles with carousels.
+        In these cases, if an exception is thrown from this method, the entire article will be
+        skipped. An except clause that returns "None" will allow the article to be included
+        without an image.
         :param html: BeautifulSoup object of the article HTML of the article.
-        :return: URL to the image that represents the article.
+        :return: URL to the image that represents the article or None with the article does not
+        have an image.
         """
         pass
 
