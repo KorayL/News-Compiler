@@ -1,3 +1,4 @@
+import datetime
 from abc import ABC, abstractmethod
 
 import requests
@@ -35,7 +36,7 @@ class Site(ABC):
         self.set_source()
         self.set_category()
 
-        print("\tdownloading website HTMl")
+        print(f"\tdownloading website HTMl: {self.url}")
         self.html = self.get_html(self.url)
 
     def create_articles(self):
@@ -131,14 +132,22 @@ class Site(ABC):
         pass
 
     @abstractmethod
-    def get_date(self, html: BeautifulSoup) -> None:
-        """ TODO: update method with datetime object return type. """
+    def get_date(self, html: BeautifulSoup) -> int | None:
+        """
+        Gets the date associated with the article. The date should be UNIX/POSIX format: the
+        number of *seconds* since the epoch in your timezone. This time will be used to sort
+        articles by most recent date and will be displayed when viewing an article. This function
+        must work for each article obtained from running get_date(). If a date cannot be
+        provided, None is to be returned: that article will be placed at the bottom.
+        :param html:
+        :return:
+        """
         pass
 
     @abstractmethod
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         """
-        Gets the URL of the article's image. each article obtained from running
+        Gets the URL of the article's image. Must work for each article obtained from running
         get_article_urls(). It is okay if an article has no associated image. \n
         Highly recommend considering try/except statements in this method: some websites will
         have articles without images, have articles with videos, or have articles with carousels.

@@ -46,7 +46,7 @@ class Article:
                 "image_url": self.image_url,
                 "body": self.body,
                 "source": self.source,
-                "date": self.date,
+                "epoch": self.date,
                 "category": self.category,
             }
             self.dict = dictionary

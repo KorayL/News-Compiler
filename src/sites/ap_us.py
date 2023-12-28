@@ -1,3 +1,4 @@
+import datetime
 import re
 
 import bs4
@@ -34,8 +35,9 @@ class ap_us(Site):
     def get_title(self, html: BeautifulSoup) -> str:
         return html.find('h1').getText()
 
-    def get_date(self, html: BeautifulSoup) -> None:
-        return
+    def get_date(self, html: BeautifulSoup) -> int | None:
+        epoch: int = int(html.find("bsp-timestamp")["data-timestamp"][0:-3])
+        return epoch
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         try:
@@ -72,5 +74,8 @@ class ap_us(Site):
 
 if __name__ == "__main__":
     site = ap_us()
-    site.create_articles()
-    print(site.to_dict())
+    urls = site.get_article_urls(site.html)
+    html = site.get_html(urls[0])
+    print(urls)
+    print(html.prettify())
+    print(site.get_date(html))

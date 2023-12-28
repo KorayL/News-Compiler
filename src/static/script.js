@@ -47,6 +47,7 @@ for (const article of Object.keys(data)) {
  * Checks whether any necessary article attributes are null.
  * @param Object article with attributes: source, category, title, image_url, and body.
  * @return false if any of the Object attributes are null, true if not.
+ * @returns {boolean}
  */
 function checkArticle(Object) {
     // Boolean flag

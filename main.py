@@ -26,7 +26,7 @@ def main():
     # Create dictionary with all articles from all sites
     article_dict: dict = dict()
     for i, site in enumerate(sites):
-        print(f"getting news site {i} of {len(sites)}")
+        print(f"downloading articles from website {i+1} of {len(sites)}")
         site.create_articles()
         article_dict.update(site.to_dict())
 
