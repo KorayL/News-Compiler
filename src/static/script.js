@@ -1,6 +1,10 @@
+import {sortArticles} from "./sortArticles.js";
+
 // Get data from json
-const data = await fetch("../static/articles.json")
+let data = await fetch("../static/articles.json")
                    .then((response) => {return response.json()});
+
+data = sortArticles(data);
 
 // Loop through the articles from json
 for (const article of Object.keys(data)) {
@@ -45,9 +49,8 @@ for (const article of Object.keys(data)) {
 
 /**
  * Checks whether any necessary article attributes are null.
- * @param Object article with attributes: source, category, title, image_url, and body.
- * @return false if any of the Object attributes are null, true if not.
- * @returns {boolean}
+ * @param Object {Object} article with attributes: source, category, title, image_url, and body.
+ * @returns {boolean} false if any of the Object attributes are null, true if not.
  */
 function checkArticle(Object) {
     // Boolean flag
@@ -68,7 +71,10 @@ function checkArticle(Object) {
  * Stores the article object with the given id as object name in session storage and opens the
  * article site. Article site is to then pull the data from session storage and use to display
  * the article.
- * @param id ID belonging to the article clicked. Will also match name of article object from data.
+ * @param id {string} ID belonging to the article clicked. Will also match name of article
+ * object from
+ * data.
+ * @returns {void}
  */
 function openArticle(id) {
     // Get article object from data
