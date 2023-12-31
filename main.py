@@ -1,5 +1,6 @@
 import tkinter.messagebox as alert
 from json import dumps
+import os
 
 from src.Site import Site
 from src.sites import *
@@ -32,7 +33,8 @@ def main():
 
     # Write articles dictionary to file
     print("writing articles to file")
-    with open("src/static/articles.json", "w") as file:
+    data_path: str = fr"{os.path.realpath(__file__).removesuffix(r"\main.py")}\src\static\articles.json"
+    with open(data_path, "w") as file:
         file.write(dumps(article_dict, indent=4))
 
 
