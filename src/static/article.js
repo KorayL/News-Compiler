@@ -78,9 +78,8 @@ do {
 
 /**
  * Converts a number 0-11 to the full string name of a month.
- * @param num Number representing a month.
- * @return Full name of month between January and December
- * @returns {String}
+ * @param num {int} Number representing a month.
+ * @returns {String} Full name of month between January and December
  */
 function numToMonth(num) {
     const months = ["January", "February", "March", "April", "May", "June", "July",
@@ -91,9 +90,8 @@ function numToMonth(num) {
 
 /**
  * Converts a number 0-6 to the full string name of a weekday. 0->Sunday and 6->Saturday.
- * @param num Number representing a weekday.
- * @return Full name of weekday.
- * @returns {string}
+ * @param num {int} Number representing a weekday.
+ * @returns {string} Full name of weekday.
  */
 function numToWeekday(num) {
     const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
@@ -105,9 +103,8 @@ function numToWeekday(num) {
 /**
  * Adds a 0 in from of a number if the number is single digit. This method is to be used when
  * converting a raw number into a string suitable for displaying time.
- * @param num Number to convert
- * @return Original number as a number in a string with 2 digits.
- * @returns {string}
+ * @param num {int} Number to convert
+ * @returns {string} Original number as a number in a string with 2 digits.
  */
 function numToMinute(num) {
     if (num < 10) {
@@ -119,9 +116,8 @@ function numToMinute(num) {
 
 /**
  * Converts the hours in 24-hour time to the hours in 12-hour time.
- * @param hr 0-23 in 24-hour time
- * @return 1-12 in 12-hour time
- * @returns {int}
+ * @param hr {int} 0-23 in 24-hour time
+ * @return {int} 1-12 in 12-hour time
  */
 function militaryTo12 (hr) {
     hr %= 12;
@@ -130,8 +126,8 @@ function militaryTo12 (hr) {
 
 /**
  * Gets the meridiem AM or PM from the hours of 24-hour time.
- * @param hr The hour section of 24-hour time
- * @return AM or PM
+ * @param hr {int} The hour section of 24-hour time
+ * @returns {string} AM or PM
  */
 function getMeridiem(hr) {
     return Math.floor(hr / 12) < 1 ? "AM" : "PM"
