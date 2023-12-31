@@ -5,6 +5,7 @@ let data = await fetch("../static/articles.json")
                    .then((response) => {return response.json()});
 
 data = sortArticles(data);
+removeDuplicates(data);
 
 // Loop through the articles from json
 for (const article of Object.keys(data)) {
@@ -85,4 +86,28 @@ function openArticle(id) {
 
     // Open article html doc in same tab
     window.open("article.html", "_self");
+}
+
+/**
+ * Remove duplicate articles by date and name. Articles should be sorted by date before being
+ * passed to this function.
+ * @param articles {Object} Object containing all article objects.
+ * @returns {void}
+ */
+function removeDuplicates(articles) {
+    // Iterate through all articles starting at first and ending at second to last.
+    for (let i = 0; i < Object.keys(articles).length - 1; i++) {
+        // Get current and next articles
+        const keys = Object.keys(articles);
+        const current_article = articles[keys[i]];
+        const next_article = articles[keys[i + 1]];
+
+        // If current article's date matches next articles date
+        if (current_article["epoch"] === next_article["epoch"] &&
+            current_article["title"] === next_article["title"]) {
+                // Remove article
+                delete articles[keys[i]];
+                i--;
+        }
+    }
 }

@@ -36,7 +36,6 @@ export function sortArticles(articles_obj) {
  * @returns {void}
  */
 function quickSort(array, low, high) {
-    console.log(`Low: ${low}  High: ${high}`);
     if (high - low > 1) {
         const pivot_loc = partition(array, low, high);
 
