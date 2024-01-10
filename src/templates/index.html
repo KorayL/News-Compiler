@@ -5,7 +5,6 @@
         <meta name = "author" content = "Koray Latif" />
 
         <link rel="stylesheet" href="../static/styles.css">
-        <script type = "module" src="../static/script.js"> </script>
 
         <title>News Compiler</title>
     </head>
@@ -13,19 +12,30 @@
         <!-- Template for a single article -->
         <template id="template_article">
             <div class="article">
-                <h3 id="template_title"></h3>
+                <h4 id="template_title"></h4>
                 <img id="template_image" alt="" src="">
                 <p id="template_src"></p>
             </div>
         </template>
 
-        <!-- Top Menu -->
-        <div id="menu">
-            <h1>News Compiler</h1>
-        </div>
+        <!-- Template for a single column | articles are put into columns -->
+        <template id="template_column">
+            <div class="column" id="column">
+                <!-- Articles will be placed here -->
+            </div>
+        </template>
 
-        <div class="articles">
-            <!-- Articles will be placed here -->
-        </div>
+        <main>
+            <!-- Top Menu -->
+            <div id="menu">
+                <h1>News Compiler</h1>
+            </div>
+
+            <div class="articles">
+                <!-- Columns will be placed here -->
+            </div>
+        </main>
+
+        <script type = "module" src="../static/script.js"> </script>
     </body>
 </html>

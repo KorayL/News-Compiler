@@ -1,4 +1,5 @@
 import {sortArticles} from "./sortArticles.js";
+import {generate_grid} from "./generate_grid.js";
 
 // Get data from json
 let data = await fetch("../static/articles.json")
@@ -6,6 +7,12 @@ let data = await fetch("../static/articles.json")
 
 data = sortArticles(data);
 removeDuplicates(data);
+
+/**
+ * Array into which document fragments are placed to be later added to columns
+ * @type {array.<Node>}
+ */
+let articles = [];
 
 // Loop through the articles from json
 for (const article of Object.keys(data)) {
@@ -43,17 +50,45 @@ for (const article of Object.keys(data)) {
     template_container.addEventListener("click", function() {openArticle(this.id)})
     template_container.style.cursor = "grab";
 
-    // Add template to site
-    const container = document.getElementsByClassName("articles")[0];
-    container.appendChild(template);
+    // Add template to list of article templates
+    articles.push(template);
+}
+
+let prev_num_cols = calcNumCols();
+
+generate_grid(prev_num_cols, articles);
+
+// Dynamically adjust number of columns
+window.addEventListener("resize", () => {
+    const new_num_cols = calcNumCols();
+
+    if (new_num_cols !== prev_num_cols) {
+        generate_grid(new_num_cols, articles);
+        prev_num_cols = new_num_cols;
+    }
+})
+
+/**
+ * Calculates, based on the width of the window, the number of columns the website should use to
+ * make masonry grid layout.
+ * @returns {number} The number of columns to be used.
+ */
+function calcNumCols() {
+    const width = window.innerWidth;
+
+    if (width <= 600) {
+        return 1;
+    } else {
+        return Math.floor(width / 300);
+    }
 }
 
 /**
  * Checks whether any necessary article attributes are null.
- * @param Object {Object} article with attributes: source, category, title, image_url, and body.
+ * @param object {Object} article with attributes: source, category, title, image_url, and body.
  * @returns {boolean} false if any of the Object attributes are null, true if not.
  */
-function checkArticle(Object) {
+function checkArticle(object) {
     // Boolean flag
     let valid = true;
 
@@ -62,7 +97,7 @@ function checkArticle(Object) {
 
     // Check if necessary attributes are null.
     for (let attribute of attributes) {
-        if (Object[attribute] == null) valid = false;
+        if (object[attribute] == null) valid = false;
     }
 
     return valid;
