@@ -11,13 +11,14 @@ export function generate_grid(num_columns, tiles) {
     // Create and store columns from template
     for (let i = 0; i < num_columns; i++){
         const column = document.getElementById("template_column").content.cloneNode(true);
+        const container = column.getElementById("column");
+        container.id = `column${i}`;
 
         // Add articles to column
         for (let j = i; j < tiles.length; j += num_columns) {
             const tile = tiles[j].cloneNode(true);
-            column.getElementById("column").appendChild(tile);
+            container.appendChild(tile);
         }
-        // console.log("add")
         document.getElementsByClassName("articles")[0].appendChild(column);
     }
 }

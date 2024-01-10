@@ -57,6 +57,7 @@ for (const article of Object.keys(data)) {
 let prev_num_cols = calcNumCols();
 
 generate_grid(prev_num_cols, articles);
+addEventListenersToArticles()
 
 // Dynamically adjust number of columns
 window.addEventListener("resize", () => {
@@ -64,9 +65,24 @@ window.addEventListener("resize", () => {
 
     if (new_num_cols !== prev_num_cols) {
         generate_grid(new_num_cols, articles);
+        addEventListenersToArticles()
         prev_num_cols = new_num_cols;
     }
 })
+
+/**
+ * The generate_grid() method remove all event listeners from articles due to the .cloneNode()
+ * function. This method is intended to be used to fix that. It should be run after the
+ * generate_grid() method.
+ * @returns {void}
+ */
+function addEventListenersToArticles() {
+    const articles = document.getElementsByClassName("article");
+
+    for (let article of articles) {
+        article.addEventListener("click", function() {openArticle(this.id)});
+    }
+}
 
 /**
  * Calculates, based on the width of the window, the number of columns the website should use to
