@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 import requests
 from bs4 import BeautifulSoup
+from multiprocessing import Pool
 
 from src.Article import Article
 
@@ -44,11 +45,17 @@ class Site(ABC):
 
         urls = self.get_article_urls(self.html)
 
-        for url in urls:
+        # Get all htmls via multiprocessing
+        with Pool() as pool:
+            htmls = pool.map(self.get_html, urls)
+
+        # Combine htmls and urls for use in for loop
+        urls_and_htmls = [(urls[i], htmls[i]) for i in range(len(urls))]
+
+        for url, html in urls_and_htmls:
             print(f"\textracting information from article: {url}")
             # Use abstract methods to get all necessary information
             try:
-                html = self.get_html(url)
                 title = self.get_title(html)
                 image_url = self.get_image_url(html)
                 body = self.get_body(html)
