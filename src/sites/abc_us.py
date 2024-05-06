@@ -26,7 +26,7 @@ class abc_us(Site):
     def get_article_urls(self, html: BeautifulSoup) -> list[str]:
         links: list[str] = []
 
-        stories: list[bs4.element] = html.findAll(class_="ContentList__Item", limit=20)
+        stories: list[bs4.element] = html.findAll(class_="ContentRoll__Item", limit=20)
 
         for story in stories:
             links.append(story.find("a", class_="AnchorLink")["href"])
@@ -50,15 +50,22 @@ class abc_us(Site):
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         try:
-            return html.find(lambda tag: tag.name == "img" and tag.has_attr("data-testid") and
-                             tag["data-testid"] == "prism-image")["src"]
+            body = html.find(lambda tag: tag.has_attr("data-testid") and tag["data-testid"] == "prism-article-body")
+            image_tag = body.find(class_=re.compile("InlineImage"))
+            image_url = image_tag.find("img")["src"]
+            return image_url
+
         except TypeError:
+            return None
+        except AttributeError:
             return None
 
     def get_body(self, html: BeautifulSoup) -> list[str]:
         paragraphs: list[str] = []
 
-        paragraph_tags: list[bs4.PageElement] = html.findAll(class_=re.compile("Ekqk nlgH yuUa"))
+        body_div: bs4.element = html.find(
+            lambda tag: tag.has_attr("data-testid") and tag["data-testid"] == "prism-article-body")
+        paragraph_tags: list[bs4.PageElement] = html.findAll("p")
 
         for tag in paragraph_tags:
             paragraphs.append(tag.getText())
@@ -69,9 +76,12 @@ class abc_us(Site):
 if __name__ == "__main__":
     site = abc_us()
     urls = site.get_article_urls(site.html)
-    # print(urls)
-    html = site.get_html(urls[0])
-    # print(html.prettify())
-    date = site.get_date(html)
-    # print(date)
+    for url in urls:
+        # do not print the entire html
+        print(url)
+        html = site.get_html(url)
+        print(site.get_title(html))
+        print(site.get_date(html))
+        print(site.get_image_url(html))
+        print(site.get_body(html))
 
