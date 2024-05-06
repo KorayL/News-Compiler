@@ -146,8 +146,8 @@ class Site(ABC):
         articles by most recent date and will be displayed when viewing an article. This function
         must work for each article obtained from running get_date(). If a date cannot be
         provided, None is to be returned: that article will be placed at the bottom.
-        :param html:
-        :return:
+        :param html: BeautifulSoup object of the article HTML of the article.
+        :return: The date of the article in UNIX/POSIX format or None if no date is available.
         """
         pass
 
