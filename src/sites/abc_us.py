@@ -45,7 +45,7 @@ class abc_us(Site):
                                          .timetuple()))
 
             return epoch
-        except AttributeError or ValueError:
+        except (AttributeError, ValueError):
             return None
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
@@ -55,9 +55,7 @@ class abc_us(Site):
             image_url = image_tag.find("img")["src"]
             return image_url
 
-        except TypeError:
-            return None
-        except AttributeError:
+        except (TypeError, AttributeError):
             return None
 
     def get_body(self, html: BeautifulSoup) -> list[str]:
