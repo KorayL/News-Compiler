@@ -1,7 +1,4 @@
 import re
-import time
-import traceback
-from datetime import datetime
 
 import bs4
 from bs4 import BeautifulSoup
@@ -46,16 +43,17 @@ class nbc_us(Site):
 
     def get_date(self, html: BeautifulSoup) -> int | None:
         try:
-            date: str = html.find(class_=re.compile("mb[0-9]")).find("time")["datetime"]
-            date = date.split(".")[0] + date[-1]
+            date: str = html.find(class_=re.compile("mb[0-9]")).find("time").getText()
+            date = date.split(r"/")[0]  # Remove the '/' and everything after it if it exists
 
-            # https://docs.python.org/3/library/time.html#time.strptime
-            # December 28, 2023, 7:27 AM
-            epoch: int = int(time.mktime(datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ").timetuple()))
+            # Removing trailing " " if it exists
+            if date[-1] == " ":
+                date = date[:-1]
 
-            return epoch
         except (AttributeError, ValueError):
             return None
+
+        return self._date_parser_helper(date)
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         try:

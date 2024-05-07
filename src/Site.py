@@ -1,10 +1,14 @@
 import datetime
+import time
 import traceback
 from abc import ABC, abstractmethod
 
 import requests
 from bs4 import BeautifulSoup
 from multiprocessing import Pool
+
+from dateutil import parser
+from tzlocal import get_localzone
 
 from src.Article import Article
 
@@ -154,6 +158,21 @@ class Site(ABC):
         :return: The date of the article in UNIX/POSIX format or None if no date is available.
         """
         pass
+
+    @staticmethod
+    def _date_parser_helper(date: str) -> int | None:
+        """
+        Helper method for parsing any date string of any formate to a UNIX/POSIX timestamp expected by get_date().
+        The intent of this method is to be used within get_date() after pulling straight from the HTML.
+        :param date: The date string to be parsed.
+        :return: The date in UNIX/POSIX format or None if the date string is not parsable.
+        """
+
+        try:
+            epoch: int = int(time.mktime(parser.parse(date).astimezone(get_localzone()).timetuple()))
+            return epoch
+        except parser._parser.ParserError:
+            return None
 
     @abstractmethod
     def get_image_url(self, html: BeautifulSoup) -> str | None:

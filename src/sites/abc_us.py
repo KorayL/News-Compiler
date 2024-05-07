@@ -1,6 +1,4 @@
 import re
-import time
-from datetime import datetime
 
 import bs4
 from bs4 import BeautifulSoup
@@ -37,16 +35,11 @@ class abc_us(Site):
 
     def get_date(self, html: BeautifulSoup) -> int | None:
         try:
-            date: str = html.find("div", class_="xAPp Zdbe jTKb pCRh").get_text()
-
-            # https://docs.python.org/3/library/time.html#time.strptime
-            # December 28, 2023, 7:27 AM
-            epoch: int = int(time.mktime(datetime.strptime(date, "%B %d, %Y, %I:%M %p")
-                                         .timetuple()))
-
-            return epoch
+            date: str = html.find("div", class_="xAPpq JQYD ZdbeE  jTKbV pCRh ").get_text()
         except (AttributeError, ValueError):
             return None
+
+        return self._date_parser_helper(date)
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
         try:
