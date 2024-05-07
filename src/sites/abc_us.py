@@ -75,13 +75,4 @@ class abc_us(Site):
 
 if __name__ == "__main__":
     site = abc_us()
-    urls = site.get_article_urls(site.html)
-    for url in urls:
-        # do not print the entire html
-        print(url)
-        html = site.get_html(url)
-        print(site.get_title(html))
-        print(site.get_date(html))
-        print(site.get_image_url(html))
-        print(site.get_body(html))
-
+    site.create_articles(stacktrace=True)

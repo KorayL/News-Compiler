@@ -1,4 +1,5 @@
 import datetime
+import traceback
 from abc import ABC, abstractmethod
 
 import requests
@@ -40,7 +41,7 @@ class Site(ABC):
         print(f"\tdownloading website HTMl: {self.url}")
         self.html = self.get_html(self.url)
 
-    def create_articles(self):
+    def create_articles(self, stacktrace=False) -> None:
         """ Populates the list of articles for this news website. """
 
         urls = self.get_article_urls(self.html)
@@ -62,7 +63,10 @@ class Site(ABC):
                 date = self.get_date(html)
             except Exception as e:  # If any exception occurs, skip the article
                 print(f"Skipping article due to exception! {url}")
-                print(e)
+                if stacktrace:
+                    traceback.print_exc()
+                else:
+                    print(e)
                 continue
 
             # Create one string from body with special characters between all paragraphs

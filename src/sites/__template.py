@@ -52,4 +52,4 @@ class template(Site):
 if __name__ == "__main__":
     """ Use this for testing. It will not run when imported. """
     t = template()
-    t.create_articles()
+    t.create_articles(stacktrace=True)
