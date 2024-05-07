@@ -23,3 +23,5 @@ or
 1. Clone [repository](https://github.com/KorayL/News-Compiler.git)
 2. run `pip install -r requirements.txt` in repository directory
 3. run main.py with python
+
+![Demo Image](./demoImage.png)
