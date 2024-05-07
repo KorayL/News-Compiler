@@ -1,4 +1,5 @@
-from bs4 import BeautifulSoup
+import traceback
+import re
 
 import bs4
 from bs4 import BeautifulSoup
@@ -26,13 +27,13 @@ class template(Site):
     """
 
     def set_url(self) -> None:
-        pass
+        self.url = ""
 
     def set_source(self) -> None:
-        pass
+        self.source = ""
 
     def set_category(self) -> None:
-        pass
+        self.category = ""
 
     def get_article_urls(self, html: BeautifulSoup) -> list[str]:
         pass
@@ -40,10 +41,23 @@ class template(Site):
     def get_title(self, html: BeautifulSoup) -> str:
         pass
 
-    def get_date(self, html: BeautifulSoup) -> None:
+    def get_date(self, html: BeautifulSoup) -> int | None:
         pass
+        try:
+            # Get the date from the website
+            date: str
+        except (AttributeError, ValueError):
+            return None
+
+        return self._date_parser_helper(date)
 
     def get_image_url(self, html: BeautifulSoup) -> str | None:
+        try:
+            # Try to get the image from the website
+            pass
+        except (TypeError, AttributeError):
+            return None
+
         pass
 
     def get_body(self, html: BeautifulSoup) -> list[str]:
