@@ -140,8 +140,8 @@ function openArticle(id) {
 }
 
 /**
- * Remove duplicate articles by date and name. Articles should be sorted by date before being
- * passed to this function.
+ * Remove adjacent duplicate articles by date and name. Articles should be sorted by date before
+ * being passed to this function.
  * @param articles {Object} Object containing all article objects.
  * @returns {void}
  */
@@ -150,15 +150,20 @@ function removeDuplicates(articles) {
     for (let i = 0; i < Object.keys(articles).length - 1; i++) {
         // Get current and next articles
         const keys = Object.keys(articles);
-        const current_article = articles[keys[i]];
-        const next_article = articles[keys[i + 1]];
 
-        // If current article's date matches next articles date
-        if (current_article["epoch"] === next_article["epoch"] &&
-            current_article["title"] === next_article["title"]) {
-                // Remove article
-                delete articles[keys[i]];
-                i--;
-        }
+        // Move forward and delete until a non-duplicate article is found
+        for (let j = i + 1; isDuplicate(articles[keys[i]], articles[keys[j]]); j++)
+            delete articles[keys[j]];
     }
+}
+
+/**
+ * Checks if two articles are duplicates based on their date and title.
+ * @param article1 {Object} First article object.
+ * @param article2 {Object} Second article object.
+ * @returns {boolean} True if articles are duplicates, false if not.
+ */
+function isDuplicate(article1, article2) {
+    return article1["epoch"] === article2["epoch"] &&
+           article1["title"] === article2["title"];
 }

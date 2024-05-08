@@ -58,7 +58,7 @@ function partition(array, low, high) {
     const pivot = array[low];  // Use first element as pivot
     let swapIndex = high;
     for (let i = low + 1; i <= swapIndex; i++) {
-        if (array[i]["epoch"] <= pivot["epoch"]) {
+        if (compare(array[i], pivot) < 0) {
             swap(array, i, swapIndex);
             i--; swapIndex--;
         }
@@ -66,6 +66,20 @@ function partition(array, low, high) {
 
     swap(array, low, swapIndex);
     return swapIndex;
+}
+
+/**
+ * Compares two objects first by their epoch attribute, then by their title attribute.
+ * @param a {Object} First object to compare.
+ * @param b {Object} Second object to compare.
+ */
+function compare(a, b) {
+    if (a["epoch"] < b["epoch"]) return -1;
+    if (a["epoch"] > b["epoch"]) return 1;
+    if (a["title"] < b["title"]) return -1;
+    if (a["title"] > b["title"]) return 1;
+
+    return 0;
 }
 
 /**
