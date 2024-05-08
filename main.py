@@ -1,4 +1,5 @@
 from tkinter import messagebox
+from tkinter import Tk
 from json import dumps
 import os
 
@@ -53,7 +54,10 @@ if __name__ == '__main__':
     print("running main")
     try:
         # Only download articles if user wants to
+        root = Tk()
+        root.withdraw()
         reload: bool = messagebox.askyesnocancel("Article Download", "Would you like to download the latest articles?")
+        root.update()
         if reload:
             main()
         if reload is None:
@@ -61,4 +65,7 @@ if __name__ == '__main__':
 
         gui.run()
     except Exception as e:
+        root = Tk()
+        root.withdraw()
         messagebox.showerror(title="An error has occurred!", message=str(e))
+        root.update()

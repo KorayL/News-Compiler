@@ -7,10 +7,15 @@ News compiler is a resource that aggregates news articles from across the intern
 ## How to Use 📜
 
 1. [Python](https://www.python.org/downloads/) must be installed
-2. Follow the steps below to install News Compiler:
+2. Follow the steps below to install and run News Compiler:
 
-<br/>
+| Windows                                                                                            | MacOS                                                                           |
+|:---------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|
+| 1. Download the [repository](https://github.com/KorayL/News-Compiler.git)                          | 1. Download the [repository](https://github.com/KorayL/News-Compiler.git)       |
+| 2. Run the winPrep.bat file _or_ run `pip install -r requirements.txt` in the repository directory | 2. Run `python3 -m pip install -r requirements.txt` in the repository directory |
+| 3. Run main.py with python                                                                         | 3. Run main.py with Python Launcher                                             |
 
+or on the command line:
 ```sh
 git clone https://github.com/KorayL/News-Compiler.git
 cd News-Compiler
@@ -18,10 +23,11 @@ pip install -r requirements.txt
 python main.py
 ```
 
-or
+---
+## Screenshots 📸
 
-1. Clone [repository](https://github.com/KorayL/News-Compiler.git)
-2. run `pip install -r requirements.txt` in repository directory
-3. run main.py with python
+![Whole Compiler Image](./compilerImage.png)
 
-![Demo Image](./demoImage.png)
+---
+
+![Article Image](./articleImage.png)
