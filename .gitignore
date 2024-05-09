@@ -4,5 +4,5 @@
 **/Desktop
 
 # Data will be generated
-**/data/**
 /src/static/articles.json
+/src/version.txt

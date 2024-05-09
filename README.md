@@ -26,8 +26,8 @@ python main.py
 ---
 ## Screenshots 📸
 
-![Whole Compiler Image](./compilerImage.png)
+![Whole Compiler Image](assets/compilerImage.png)
 
 ---
 
-![Article Image](./articleImage.png)
+![Article Image](assets/articleImage.png)

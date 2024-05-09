@@ -8,6 +8,8 @@ from multiprocessing import Pool
 from src.Site import Site
 from src.sites import *
 import src.flask_app as gui
+from src.git_tools import pull as check_for_updates
+from src.git_tools import initialize as initialize_project
 
 
 def instantiate(class_: type) -> object:
@@ -51,7 +53,15 @@ def main():
 
 
 if __name__ == '__main__':
-    print("running main")
+    # Setting up repository structure
+    if not os.path.exists(".git"):  # Check if .git folder exists
+        print("No git repository found...")
+        initialize_project()
+    else:
+        print("Checking for Updates...")
+        check_for_updates()
+
+    print("Running News Compiler...")
     try:
         # Only download articles if user wants to
         root = Tk()
