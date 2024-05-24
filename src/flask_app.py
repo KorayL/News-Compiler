@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flaskwebgui import FlaskUI
 
 import waitress
@@ -31,7 +31,7 @@ def reload():
     """ Reloads the main site. """
 
     main()  # Run main function to update articles
-    return render_template("index.html")
+    return redirect("/")  # Redirect to the main site
 
 # Function to run the gui
 def run():
