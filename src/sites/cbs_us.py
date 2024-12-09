@@ -9,7 +9,7 @@ from src.Site import Site
 class cbs_us(Site):
 
     def set_url(self) -> None:
-        self.url = "https://www.cbsnews.com/latest/us/"
+        self.url = "https://www.cbsnews.com/us/"
 
     def set_source(self) -> None:
         self.source = "CBS News"
